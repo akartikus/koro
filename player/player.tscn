@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq8qtlcbandsp"]
+
+[ext_resource type="Texture2D" uid="uid://s72475bj8dao" path="res://icon.svg" id="1_byviw"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_sbkw3"]
+[ext_resource type="PackedScene" uid="uid://dgkv85ylbwigh" path="res://weapon/bullet.tscn" id="2_luuie"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kto88"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_byviw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgdr1"]
+size = Vector2(61, 62)
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_sbkw3")
+Bullet = ExtResource("2_luuie")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_kto88")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_kgdr1")
